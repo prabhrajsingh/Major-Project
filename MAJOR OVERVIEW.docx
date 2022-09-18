@@ -1,0 +1,76 @@
+# https://blog.dataiku.com/outfit-recommendation-system
+
+Ever have trouble deciding what to wear in the morning? Well, it may not be a problem for much longer!
+Thanks to this computer vision-based outfit recommendation system, 
+don’t waste those precious minutes deciding what to wear,
+let AI do it for you! 
+
+Used the Polyvore dataset.
+Polyvore is a fashion website where users upload images of outfits and each outfit receives likes from other users. 
+
+The data consists of folders of outfit images as well as JSONs containing metadata for each outfit 
+(i.e., the number of likes that each outfit received and the category of clothing for each component of the outfit).
+
+
+
+Since each outfit has a score (the number of likes), 
+we can generate all combinations of outfits in a particular user’s closet, 
+predict the number of likes each outfit would receive, 
+and return the outfit with the highest number of likes as predicted outfit recommendations.
+
+The final project flow is a little more complicated. We can break it down into two general sections:
+    1. Model Training
+    2. Outfit Recommendation
+
+
+1. Model Training
+    > Use the outfit descriptions to extract only the images that match articles of clothing in our definition of an "outfit."
+    > Train an autoencoder model for each type of clothing in our defined “outfit.”
+    > Predict embeddings for each input image.
+    > Train a multi-input CNN to predict the likes for each outfit.
+
+
+2. Outfit Recommendation
+    > Input end user wardrobe and predict the embedding for each image.
+    > Generate all possible combinations of outfits using the images.
+    > Score each possible outfit using the CNN.
+    > Create three clusters of outfits based on the embeddings.
+    > Return the outfit with the top score for each cluster as predictions.
+
+
+INITIAL DATA CLEANING
+    The Polyvore dataset includes three JSONs (test, train, and validation) with metadata for each outfit. 
+    We can import these JSONs as datasets in Dataiku to obtain the paths to relevant images from each outfit. 
+    Because Dataiku automatically handles test/train splits, 
+        I combined all the data before cleaning it in a prepare recipe. 
+
+    In the prepare recipe, we removed all outfits that weren’t relevant to the problem by using the “filter on value” processor. 
+    For example, we removed all outfits that contained 
+        “A menswear look” 
+            in the description to make sure we were only looking at women’s fashion for this project.
+
+
+Next, I needed to define what I would consider an “outfit.” In this project I considered two basic types of outfits:
+
+    Type 1:
+
+        > Dress
+        > Outerwear (optional)
+        > Shoes
+        > Bag
+
+
+    Type 2:
+
+        > Top
+        > Bottom
+        > Pullover (optional)
+        > Outerwear (optional)
+        > Shoes
+        > Bag
+
+
+we used a series of Python steps in my prepare recipe to remove any outfits that didn’t match the two outfit criteria above. 
+For example, if an outfit contained a dress but no shoes, we would drop it from the dataset. Finally,
+we created a column containing the path to the actual image for each article of clothing for each outfit, 
+which we can reference to build the models.
