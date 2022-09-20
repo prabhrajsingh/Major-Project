@@ -2,124 +2,56 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-        
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            
         <title>OOTD</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-            *{
-                list-style: none;
+            
+            body
+            {
+                background-image: url("https://raw.githubusercontent.com/prabhrajsingh/Major-Project/master/django_side/b1.png");
+                background-size:cover;
+                font-family:monospace;
+                font-size:0.5cm;
+                color: rgb(0, 0, 0);
+                text-align: center;
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            a:link 
+            {
+                color: midnightblue;
+                background-color: transparent;
                 text-decoration: none;
-                margin: 0;
-                padding: 30;
-                box-sizing: border-box;
-                font-family: 'Open Sans', sans-serif;
             }
-
-            body{
-                background: rgb(0, 0, 0);
-            }
-
-            .sidebar{
-                background: rgb(19, 226, 40);
-                line-height: 250%;
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 300px;
-                height: 100%;
-                padding: 10px;
-                transition: all 0.5s ease;
-            }
-            .sidebar ul li a
+             a:visited 
             {
-                display:block;
-                padding:13px;
-                margin-right: 35px;
-                border-bottom: 1px solid white;
-                color: white;
-                font-size: 16px;
-                text-align: left;
-                position: relative;
+                color:midnightblue;
+                background-color: transparent;
+                text-decoration: none;
             }
-
-            .sidebar ul li a .icon
+            
+            a:hover 
             {
-                color: white;
-                width: 30px;
-                display: inline-block;
+                color: violet;
+                background-color: transparent;
+                text-decoration: underline;
             }
-            .sidebar ul li a:hover,
-            .sidebar ul li a.active
+            /*
+            a:active 
             {
                 color: black;
-                background:white;
-                border-radius: 50px;
-            }
-
-            .sidebar ul li a:hover .icon,
-            .sidebar ul li a.active .icon
-            {
-                color: black;
-            }
-
-            .sidebar ul li a:hover:before,
-            .sidebar ul li a.active:before
-            {
-                display: block;
-            }
-
-            .section .sliding_menu a
-            {
-                font-size: 30px;
-                color: white;
-                padding: 20px;
-                margin-left:10px;
-            }
-
-            .section .sliding_menu a:hover{
-                color: rgb(19, 226, 40);
-            }
-
-
-            body.active .sidebar
-            {
-                right: -300px;
-            }
-
-            body.active .section{
-                margin-left: 0;
-                width: 100%;
-            }
-
+                background-color: transparent;
+                text-decoration: underline;
+            } */
         </style>
     </head>
     <body class="active">
-        <div class="sidebar">
-            <ul>
-                <li>
-                    <a href="https://youtu.be/dQw4w9WgXcQ">
-                        <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span>
-                        <span class="item">UPLOAD</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="section">
-            <div class="sliding_menu">
-                <a href="#">
-                    <i class="fas fa-bars"></i>
-                </a>
-            </div>
-        </div>
-        <script>
-            var sliding_menu = document.querySelector(".sliding_menu");
-	        sliding_menu.addEventListener("click", function(){
-                document.querySelector("body").classList.toggle("active");
-	        })
-        </script>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+        <br><br>
+        <h1><a href="#">CLICK TO CONTINUE</a></h1>
     </body>
 </html>
