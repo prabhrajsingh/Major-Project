@@ -15,10 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
+admin.site.site_header = 'BACKEND'
+admin.site.site_title = 'BACKEND PANEL'
+admin.site.index_title = 'WELCOME TO THE MANAGE PANEL'
+
 from . import views
+from outfit_store.views import(
+    menu,
+    
+)
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-
+    path('Menu', menu, name='Menu.html')
 ]
