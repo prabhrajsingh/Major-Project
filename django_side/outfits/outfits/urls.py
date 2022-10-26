@@ -23,13 +23,20 @@ admin.site.index_title = 'WELCOME TO THE MANAGE PANEL'
 from . import views
 from outfit_store.views import(
     menu,
-    
+    OOTD,
+    upload,
+    wardrobe,
+    profile,
+    settings,
 )
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('Menu', menu, name='Menu.html')
+    path('Menu', menu, name='Menu.html'),
+    path('OOTD', OOTD, name='OOTD.html'),
+    path('user', profile, name='user.html'),
+    path('settings', settings, name='settings.html'),
+    path('upload', upload, name='upload.html'),
+    path('wardrobe', wardrobe, name='wardrobe.html'),
 ]
