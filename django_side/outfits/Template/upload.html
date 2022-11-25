@@ -1,13 +1,21 @@
 {% extends "Menu.html" %}
-<style>
-</style>
 {% block content %}
-<div class="center">
-    <form action='Menu' method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+<head>
+    <style>
+        .center_body
+        {
+            margin-left: 17cm;
+
+        }
+    </style>
+</head>
+<h2 class="center">UPLOAD</h2>
+<div style = 'margin-top:25px;' class="center_body">
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_p }}
-        <button style='margin-top:10px;' type = 'submit'>UPLOAD IMAGE </button>
+        <button style='margin-top:10px;' type = 'submit'>UPLOAD IMAGE</button>
     </form>
-</div><br><br><br><br>
+</div>
+<br>
 <h3><p><a href="Menu" class = "contact_text" >#back</a></p></h3>
 {% endblock content %}

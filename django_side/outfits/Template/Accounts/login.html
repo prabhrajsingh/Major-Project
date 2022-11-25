@@ -2,17 +2,62 @@
 
 {% block content %} 
 {% if not request.user.is_authenticated %}
-    <div style = 'margin-top:30px;'>
-        <form method = 'POST'>{% csrf_token %} 
-            {{form.as_p}}
-            <button type = 'submit'> LOGIN </button>
+<head>
+    <style>
+        body
+        {
+            font-family: monospace;
+            font-style: oblique;
+        }
+        a:link 
+        {
+            color: aqua;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:visited 
+        {
+            color:aqua;
+            background-color: transparent;
+            text-decoration: none;
+        }    
+        a:hover 
+        {
+            color: violet;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        a:active 
+        {
+            color: white;
+            background-color: transparent;
+            text-decoration: underline;
+        } 
+    </style>
+</head>
+    <div style = 'margin-top:100px;' class="center">
+        <form method = 'POST'>{% csrf_token %}<h1>Login</h1>
+            {% if error %}
+            <p style="color:rgb(255, 89, 0)">{{ error }}</p>
+            {% endif %}
+            <div>
+                <p><input type='text' name='username' placeholder='username'/></p>
+            </div>
+            <div>
+                <p><input type='text' name='password' placeholder="password"/></p>
+            </div>
+            <button type="submit">Login</button>
         </form>
-        <p>Need an Account?<a href = '/register'>Register</a></p>
+        <p>Need an Account?<a href = '/register'> Register!</a></p>
     </div>
 
 {% else %}
 
-    <p> YOU'RE ALREADY LOGGED IN. WOULD YOU LIKE TO <a href='/logout/'>logout</a>?</p>
+    <div class="center">
+        <p> YOU'RE ALREADY LOGGED IN.</p>
+        <p><a href="/Menu" class="button">CONTINUE TO MENU? </a></p>
+        <p><a href='/logout/' class="button">LOGOUT?</a></p>
+    </div>
 
 {% endif %}
 

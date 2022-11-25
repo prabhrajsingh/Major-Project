@@ -1,0 +1,49 @@
+{% extends "Menu.html" %}
+
+{% block content %} 
+<head>
+    <style>
+        body
+        {
+            font-family: monospace;
+            font-style: oblique;
+        }
+        a:link 
+        {
+            color: aqua;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:visited 
+        {
+            color:aqua;
+            background-color: transparent;
+            text-decoration: none;
+        }    
+        a:hover 
+        {
+            color: violet;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        a:active 
+        {
+            color: white;
+            background-color: transparent;
+            text-decoration: underline;
+        } 
+    </style>
+</head>
+{% if not request.user.is_authenticated %}
+    <div style = 'margin-top:25px;'>
+        <h1> REGISTER </h1>
+        <form method = 'POST'>{% csrf_token %}
+            {{form.as_p}}
+            <button type = 'submit'>REGISTER</button>
+        </form>
+        <p> Already have an Account?<a href = '/login'> Login</a>!</p>
+    </div>
+{% else %}
+    <p> YOU'RE ALREADY LOGGED IN, CANNOT RE-REGISTER. <br> WOULD YOU LIKE TO <a href='/logout/'> LOGOUT</a>?</p>
+{% endif %}
+{% endblock %}

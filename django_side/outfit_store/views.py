@@ -18,5 +18,5 @@ def wardrobe(request):
 def profile(request):
     return render (request, 'user.html')
 
-def settings(request):
-    return render (request, 'settings.html')
+def category(request):
+    return render (request, 'category.html')

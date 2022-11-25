@@ -20,23 +20,32 @@ admin.site.site_header = 'BACKEND'
 admin.site.site_title = 'BACKEND PANEL'
 admin.site.index_title = 'WELCOME TO THE MANAGE PANEL'
 
+from accounts.views import (
+    login_view,
+    logout_view,
+    register_view, 
+)
 from . import views
+
 from outfit_store.views import(
     menu,
     OOTD,
     upload,
     wardrobe,
     profile,
-    settings,
+    category,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('login/', login_view),
+    path('logout/', logout_view),
+    path('register/', register_view),
     path('Menu', menu, name='Menu.html'),
     path('OOTD', OOTD, name='OOTD.html'),
     path('user', profile, name='user.html'),
-    path('settings', settings, name='settings.html'),
+    path('category', category, name='category.html'),
     path('upload', upload, name='upload.html'),
     path('wardrobe', wardrobe, name='wardrobe.html'),
 ]
