@@ -1,6 +1,8 @@
+# forms.py
 from django import forms
+from .models import *
 
-class outfit_upload_form(forms.Form):
-    name = forms.CharField()
-    category = forms.CharField()
-    dress = forms.ImageField()
+class DressForm(forms.ModelForm):  
+    class Meta:
+        model = outfit_upload
+        fields = ['User_name', 'dress_name', 'dress']

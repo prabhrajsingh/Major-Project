@@ -1,11 +1,32 @@
 {% extends "Menu.html" %}
-<style>
-</style>
 {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <style>
+        .center_body
+        {
+            margin-left: 10cm;
+
+        }
+    </style>
+</head>
 <div class="center">
     <h2>YOUR WARDROBE</h2>
+</div>
+<div class="center_body">
+    {% for dress_obj in dress_images %}
+        <img src="{{ dress_obj.dress.url }}" class="img-responsive" style="width: 15% ;"/><br>
+        {{ dress_obj.dress_name }}<br><br>
+    {% endfor %}
 </div>
 
 <h2></h2><br>
 <h3><p><a href="Menu" class = "contact_text" >#back</a></p></h3>
 {% endblock content %}
+
+  
+  

@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 admin.site.site_header = 'BACKEND'
 admin.site.site_title = 'BACKEND PANEL'
 admin.site.index_title = 'WELCOME TO THE MANAGE PANEL'
@@ -30,8 +34,8 @@ from . import views
 from outfit_store.views import(
     menu,
     OOTD,
-    upload,
-    wardrobe,
+    dress_image_view,
+    display_dress_images,
     profile,
     category,
 )
@@ -46,6 +50,9 @@ urlpatterns = [
     path('OOTD', OOTD, name='OOTD.html'),
     path('user', profile, name='user.html'),
     path('category', category, name='category.html'),
-    path('upload', upload, name='upload.html'),
-    path('wardrobe', wardrobe, name='wardrobe.html'),
+    path('upload', dress_image_view, name = 'upload.html'),
+    path('wardrobe', display_dress_images, name='wardrobe.html'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
